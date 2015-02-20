@@ -1,6 +1,6 @@
 Dragi naši,
 
-28. dana mjeseca veljače održat ćemo prvu Lambda radionicu. Toga sudbonosnog dana pomoći ćemo vam implementirati "Conway's Game of Life" u jednom od funkcijskih jezika po vašem izboru. Ovaj put u ponudi imamo tri mentora koji će vam pomoći pri rješavanju toga zadatka.
+U subotu, 28. dana mjeseca veljače održat ćemo prvu Lambda radionicu. Toga sudbonosnog dana pomoći ćemo vam implementirati "Conway's Game of Life" u jednom od funkcijskih jezika po vašem izboru. Ovaj put u ponudi imamo tri mentora koji će vam pomoći pri rješavanju toga zadatka.
 
 Saša Jurić pomoći će vam da prokužite Elixir i njegovu ugrađenu concurrency semantiku.
 
