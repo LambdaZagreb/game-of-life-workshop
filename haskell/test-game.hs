@@ -18,13 +18,13 @@ testCase label assertion = TestLabel label (TestCase assertion)
 main :: IO ()
 main = exitProperly $ runTestTT $ TestList
        [ TestList createGridTests
-       -- , TestList cellStatusTests
-       -- , TestList invertGridTest
+       , TestList cellStatusTests
+       , TestList invertGridTest
        , TestList getGridSizeTest
-       -- , TestList isValidCoordinateTest
-       -- , TestList getAliveNeighbourCountTests
-       -- , TestList getNextCellStatusTests
-       -- , TestList getNextGenerationTests
+       , TestList isValidCoordinateTest
+       , TestList getAliveNeighbourCountTests
+       , TestList getNextCellStatusTests
+       , TestList getNextGenerationTests
        ]
 
 
