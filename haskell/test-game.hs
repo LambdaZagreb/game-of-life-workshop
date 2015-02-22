@@ -18,13 +18,13 @@ testCase label assertion = TestLabel label (TestCase assertion)
 main :: IO ()
 main = exitProperly $ runTestTT $ TestList
        [ TestList createGridTests
-       , TestList cellStatusTests
-       , TestList invertGridTest
+       -- , TestList cellStatusTests
+       -- , TestList invertGridTest
        , TestList getGridSizeTest
-       , TestList isValidCoordinateTest
-       , TestList getAliveNeighbourCountTests
-       , TestList getNextCellStatusTests
-       , TestList getNextGenerationTests
+       -- , TestList isValidCoordinateTest
+       -- , TestList getAliveNeighbourCountTests
+       -- , TestList getNextCellStatusTests
+       -- , TestList getNextGenerationTests
        ]
 
 
@@ -59,7 +59,7 @@ getGridSizeTest =
     [ testCase "Get Grid size 2x2" $
       (2, 2) @=? getGridSize (createGrid [[1, 0], [1, 0]])
     , testCase "Get Grid size 3x3" $
-      (3, 3) @=? getGridSize (createGrid [[1, 0, 0], [1, 0, 0]])
+      (3, 3) @=? getGridSize (createGrid [[1, 0, 0], [1, 0, 0], [1, 0, 0]])
     ]
 
 isValidCoordinateTest :: [Test]
