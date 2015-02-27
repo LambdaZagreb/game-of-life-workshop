@@ -1,10 +1,23 @@
 (ns clj-gameoflife.core
   (:gen-class))
 
+;; the solution presented here is a variation on Christophe Grand's solution
+;; available at: http://clj-me.cgrand.net/2011/08/19/conways-game-of-life/
+;;
+;; (no peeking!)
+;;
+;; it's a truly beautiful demonstration of how choosing the right
+;; representation of the problem, in combination with certain features of
+;; Clojure and Lisps in general, can help create beautiful, succint solutions.
+
+;; ----------------------------------------------------------------------------
+
 ;; let's define some interesting patterns to explore:
 
 (def glider #{[2 0] [2 1] [2 2] [1 2] [0 1]})
 (def light-spaceship #{[2 0] [4 0] [1 1] [1 2] [1 3] [4 3] [1 4] [2 4] [3 4]})
+
+;; ----------------------------------------------------------------------------
 
 ;; step #0: define a create-empty-world function which will accept 2 arguments:
 ;;   - "w", as the width of the world,
@@ -24,6 +37,8 @@
 (defn create-empty-world
   [w h]
   (throw (Exception. "Not implemented.")))
+
+;; ----------------------------------------------------------------------------
 
 ;; step #1: define a create-world function which will accept 3 arguments:
 ;;   - "w", as the width of the world,
@@ -45,6 +60,8 @@
 (defn create-world
   [w h cells]
   (throw (Exception. "Not implemented.")))
+
+;; ----------------------------------------------------------------------------
 
 ;; step #2: define a "neighbours" function which will return a list of
 ;; vectors defining coordinates of all neighbors given a single argument:
@@ -73,6 +90,8 @@
   [[x y]]
   (throw (Exception. "Not implemented.")))
 
+;; ----------------------------------------------------------------------------
+
 ;; step #3: using the "neighbours" function above, define a "step" function
 ;; which will take a set of vectors defining the coordinates of living cells,
 ;; and return a set of vectors defining *all* of the surviving and newly born
@@ -95,6 +114,8 @@
 (defn step
   [living-cells]
   (throw (Exception. "Not implemented.")))
+
+;; ----------------------------------------------------------------------------
 
 ;; step #4: all together now! using the "step" and "create-world" functions
 ;; we've defined above, we can print out a certain iteration of the game!
