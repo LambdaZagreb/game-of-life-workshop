@@ -64,6 +64,10 @@
 ;;
 ;; you'll probably want to check out:
 ;;   - "filter": http://conj.io/store/v0/org.clojure/clojure/1.7.0-alpha4/clj/clojure.core/filter/
+;;
+;; the "[x y]" parameter (i.e. a parameter as a vector) is a really nice
+;; example of destructuring in Clojure. read up on the concept:
+;;   - http://clojure.org/special_forms#Special%20Forms--Binding%20Forms%20%28Destructuring%29
 
 (defn neighbours
   [[x y]]
