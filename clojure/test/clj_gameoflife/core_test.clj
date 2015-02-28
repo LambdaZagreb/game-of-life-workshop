@@ -32,19 +32,19 @@
   (testing "Calculating neighbours"
     (let [n (set (neighbours [2 2]))]
       (is (= true (contains? n [1 1])))
-      (is (= true (contains? n [1 2])))
-      (is (= true (contains? n [1 3])))
       (is (= true (contains? n [2 1])))
-      (is (= true (contains? n [2 3])))
       (is (= true (contains? n [3 1])))
+      (is (= true (contains? n [1 2])))
       (is (= true (contains? n [3 2])))
+      (is (= true (contains? n [1 3])))
+      (is (= true (contains? n [2 3])))
       (is (= true (contains? n [3 3])))
       (is (= false (contains? n [2 2]))))
     (let [n (set (neighbours [0 0]))]
       (is (= false (contains? n [-1 -1])))
-      (is (= false (contains? n [0 -1])))
-      (is (= true (contains? n [1 0])))
+      (is (= false (contains? n [-1 0])))
       (is (= true (contains? n [0 1])))
+      (is (= true (contains? n [1 0])))
       (is (= true (contains? n [1 1])))
       (is (= false (contains? n [0 0]))))))
 
@@ -53,8 +53,8 @@
     (let [living-cells glider
           next-step (step living-cells)]
       (is (= true (contains? next-step [2 2])))
-      (is (= true (contains? next-step [0 1])))
-      (is (= true (contains? next-step [1 3])))
-      (is (= true (contains? next-step [1 2])))
+      (is (= true (contains? next-step [1 0])))
+      (is (= true (contains? next-step [3 1])))
       (is (= true (contains? next-step [2 1])))
-      (is (= false (contains? next-step [1 4]))))))
+      (is (= true (contains? next-step [1 2])))
+      (is (= false (contains? next-step [4 1]))))))
