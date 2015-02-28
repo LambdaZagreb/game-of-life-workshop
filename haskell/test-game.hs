@@ -31,19 +31,19 @@ main = exitProperly $ runTestTT $ TestList
 createGridTests :: [Test]
 createGridTests =
     [ testCase "Test create grid function" $
-      [[0,0,0], [1,1,1]] @=? createGrid [[0,0,0], [1,1,1]]
+      [[Dead,Dead,Dead], [Alive,Alive,Alive]] @=? createGrid [[0,0,0], [1,1,1]]
     ]
 
 cellStatusTests :: [Test]
 cellStatusTests =
     [ testCase "Grid [[1, 0], [1, 0]], Getting cell status for (0, 0)" $
-      1 @=? getCellStatus (0, 0) testGrid
+      Just Alive @=? getCellStatus (0, 0) testGrid
     , testCase "Grid [[1, 0], [1, 0]], Getting cell status for (0, 1)" $
-      0 @=? getCellStatus (0, 1) testGrid
+      Just Dead @=? getCellStatus (0, 1) testGrid
     , testCase "Grid [[1, 0], [1, 0]], Getting cell status for (1, 0)" $
-      1 @=? getCellStatus (1, 0) testGrid
+      Just Alive @=? getCellStatus (1, 0) testGrid
     , testCase "Grid [[1, 0], [1, 0]], Getting cell status for (1, 1)" $
-      0 @=? getCellStatus (1, 1) testGrid
+      Just Dead @=? getCellStatus (1, 1) testGrid
     ]
     where testGrid = createGrid [[1, 0], [1, 0]]
 
@@ -51,7 +51,7 @@ cellStatusTests =
 invertGridTest :: [Test]
 invertGridTest =
     [ testCase "Invert Grid [[1, 0], [1, 0]]" $
-      [[0, 1], [0, 1]] @=? invertGrid (createGrid [[1, 0], [1, 0]])
+      [[Dead, Alive], [Dead, Alive]] @=? invertGrid (createGrid [[1, 0], [1, 0]])
     ]
 
 getGridSizeTest :: [Test]
@@ -65,10 +65,11 @@ getGridSizeTest =
 isValidCoordinateTest :: [Test]
 isValidCoordinateTest =
     [ testCase "Test valid coordinate" $
-      True @=? isValidCoordinate (1, 1) (createGrid [[1, 0], [1, 0]])
+      True @=? isValidCoordinate (1, 1) grid
     , testCase "Test invalid coordinate" $
-      False @=? isValidCoordinate (1, 2) (createGrid [[1, 0], [1, 0]])
+      False @=? isValidCoordinate (1, 2) grid
     ]
+    where grid = createGrid [[1, 0], [1, 0]]
 
 getAliveNeighbourCountTests :: [Test]
 getAliveNeighbourCountTests =
@@ -96,23 +97,23 @@ getAliveNeighbourCountTests =
 getNextCellStatusTests :: [Test]
 getNextCellStatusTests =
     [ testCase "Test getting next status" $
-      0 @=? getAliveNeighbourCount (0, 0) testGrid
+      Dead @=? getNextCellStatus (0, 0) testGrid
     , testCase "Test getting next status" $
-      0 @=? getAliveNeighbourCount (0, 1) testGrid
+      Dead @=? getNextCellStatus (0, 1) testGrid
     , testCase "Test getting next status" $
-      0 @=? getAliveNeighbourCount (0, 2) testGrid
+      Dead @=? getNextCellStatus (0, 2) testGrid
     , testCase "Test getting next status" $
-      1 @=? getAliveNeighbourCount (1, 0) testGrid
+      Alive @=? getNextCellStatus (1, 0) testGrid
     , testCase "Test getting next status" $
-      1 @=? getAliveNeighbourCount (1, 1) testGrid
+      Alive @=? getNextCellStatus (1, 1) testGrid
     , testCase "Test getting next status" $
-      1 @=? getAliveNeighbourCount (1, 2) testGrid
+      Alive @=? getNextCellStatus (1, 2) testGrid
     , testCase "Test getting next status" $
-      0 @=? getAliveNeighbourCount (2, 0) testGrid
+      Dead @=? getNextCellStatus (2, 0) testGrid
     , testCase "Test getting next status" $
-      0 @=? getAliveNeighbourCount (2, 1) testGrid
+      Dead @=? getNextCellStatus (2, 1) testGrid
     , testCase "Test getting next status" $
-      0 @=? getAliveNeighbourCount (2, 2) testGrid
+      Dead @=? getNextCellStatus (2, 2) testGrid
     ]
     where testGrid = createGrid [[0, 1, 0], [0, 1, 0], [0, 1, 0]]
 
