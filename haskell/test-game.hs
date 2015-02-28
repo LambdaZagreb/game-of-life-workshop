@@ -76,19 +76,19 @@ getAliveNeighbourCountTests =
     [ testCase "Test getting alive neighbour count" $
       1 @=? getAliveNeighbourCount (0, 0) testGrid
     , testCase "Test getting alive neighbour count" $
-      2 @=? getAliveNeighbourCount (0, 1) testGrid
+      3 @=? getAliveNeighbourCount (0, 1) testGrid
     , testCase "Test getting alive neighbour count" $
       0 @=? getAliveNeighbourCount (0, 2) testGrid
     , testCase "Test getting alive neighbour count" $
       1 @=? getAliveNeighbourCount (1, 0) testGrid
     , testCase "Test getting alive neighbour count" $
-      1 @=? getAliveNeighbourCount (1, 1) testGrid
+      3 @=? getAliveNeighbourCount (1, 1) testGrid
     , testCase "Test getting alive neighbour count" $
       1 @=? getAliveNeighbourCount (1, 2) testGrid
     , testCase "Test getting alive neighbour count" $
       1 @=? getAliveNeighbourCount (2, 0) testGrid
     , testCase "Test getting alive neighbour count" $
-      0 @=? getAliveNeighbourCount (2, 1) testGrid
+      1 @=? getAliveNeighbourCount (2, 1) testGrid
     , testCase "Test getting alive neighbour count" $
       0 @=? getAliveNeighbourCount (2, 2) testGrid
     ]
