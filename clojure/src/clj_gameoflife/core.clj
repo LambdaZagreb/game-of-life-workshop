@@ -36,7 +36,9 @@
 
 (defn create-empty-world
   [w h]
-  (throw (Exception. "Not implemented.")))
+  (for [y (range h)]
+    (vec (for [x (range w)]
+           ""))))
 
 ;; ----------------------------------------------------------------------------
 
@@ -59,7 +61,9 @@
 
 (defn create-world
   [w h cells]
-  (throw (Exception. "Not implemented.")))
+  (vec (for [y (range h)]
+         (vec (for [x (range w)]
+                (if (contains? cells [y x]) "X" "."))))))
 
 ;; ----------------------------------------------------------------------------
 
@@ -87,8 +91,11 @@
 ;;   - http://clojure.org/special_forms#Special%20Forms--Binding%20Forms%20%28Destructuring%29
 
 (defn neighbours
-  [[x y]]
-  (throw (Exception. "Not implemented.")))
+  [[y x]]
+  (filter
+   (fn [[y x]] (and (>= y 0) (>= x 0)))
+   (for [dx [-1 0 1] dy [-1 0 1] :when (not= 0 dx dy)]
+    [(+ dy y) (+ dx x)])))
 
 ;; ----------------------------------------------------------------------------
 
@@ -113,7 +120,9 @@
 
 (defn step
   [living-cells]
-  (throw (Exception. "Not implemented.")))
+  (set (for [[loc n] (frequencies (mapcat neighbours living-cells))
+             :when (if (living-cells loc) (or (= 2 n) (= 3 n)) (= 3 n))]
+         loc)))
 
 ;; ----------------------------------------------------------------------------
 
@@ -133,4 +142,8 @@
 
 (defn -main
   [& args]
-  (throw (Exception. "Not implemented.")))
+  (def it-step (iterate step glider))
+  (dotimes [n 30]
+    (println "\033[2J\033[;H")
+    (first (map println (create-world 10 10 (first (drop n it-step)))))
+    (Thread/sleep 500)))
