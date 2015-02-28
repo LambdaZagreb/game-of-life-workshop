@@ -21,10 +21,10 @@
       (is (= "." ((grid-5-5 2) 0)))
       (is (= "." ((grid-5-5 2) 3)))))
   (testing "Create a rectangular world"
-    (let [grid-5-5 (create-world 5 4 #{[2 2] [3 2] [4 3]})]
+    (let [grid-5-5 (create-world 5 4 #{[2 2] [3 2] [1 2]})]
       (is (= "X" ((grid-5-5 2) 2)))
       (is (= "X" ((grid-5-5 3) 2)))
-      (is (= "X" ((grid-5-5 4) 3)))
+      (is (= "X" ((grid-5-5 1) 2)))
       (is (= "." ((grid-5-5 2) 0)))
       (is (= "." ((grid-5-5 2) 3))))))
 
