@@ -9,25 +9,36 @@ type Grid = [[Status]]
 type Cell = (Int, Int)
 
 getGridSize :: Grid -> GridSize
-getGridSize g = undefined
+getGridSize g = (length (g !! 0), length g)
 
 int2Status :: Int -> Status
-int2Status e = undefined
+int2Status e = case e of
+                   1 -> Alive
+                   0 -> Dead
+                   otherwise -> error "Invalid input for Grid. Valid choices are 0 and 1."
 
 createGrid :: [[Int]] -> Grid
-createGrid g = undefined
+createGrid g = map (map int2Status) g
 
 getCellStatus :: Cell -> Grid -> Maybe Status
-getCellStatus c g = undefined
+getCellStatus c g = case (isValidCoordinate c g) of
+                        False -> Nothing
+                        True -> Just ((g !! (fst c)) !! (snd c))
 
 flipCellStatus :: Status -> Status
-flipCellStatus s = undefined
+flipCellStatus s = case s of
+                       Dead -> Alive
+                       Alive -> Dead
 
 invertGrid :: Grid -> Grid
-invertGrid g = undefined
+invertGrid g = map (map flipCellStatus) g
 
 isValidCoordinate :: Cell -> Grid -> Bool
-isValidCoordinate c g = undefined
+isValidCoordinate c g = case c of
+                            (x, y) | (x < x_size) && (y < y_size) && (x >= 0) && (y >= 0) -> True
+                            otherwise -> False
+                        where x_size = fst (getGridSize g)
+                              y_size = snd (getGridSize g)
 
 getAliveNeighbourCount :: Cell -> Grid -> Int
 getAliveNeighbourCount c g = undefined
