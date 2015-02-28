@@ -45,9 +45,9 @@
 ;;   - "h", as the height of the world,
 ;;   - "cells", as a set of vectors defining coordinates of alive cells.
 ;;
-;; as a result, it will return a list of vectors of strings, where the string
+;; as a result, it will return a vector of vectors of strings, where the string
 ;; will be:
-;;   - empty ("") if the cell is dead;
+;;   - dot (".") if the cell is dead;
 ;;   - "X" if the cell is alive.
 ;;
 ;; read about sets here:
