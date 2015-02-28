@@ -47,3 +47,14 @@
       (is (= true (contains? n [0 1])))
       (is (= true (contains? n [1 1])))
       (is (= false (contains? n [0 0]))))))
+
+(deftest test-step
+  (testing "Generating a step"
+    (let [living-cells glider
+          next-step (step living-cells)]
+      (is (= true (contains? next-step [2 2])))
+      (is (= true (contains? next-step [1 0])))
+      (is (= true (contains? next-step [3 1])))
+      (is (= true (contains? next-step [2 1])))
+      (is (= true (contains? next-step [1 2])))
+      (is (= false (contains? next-step [4 1]))))))
